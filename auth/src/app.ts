@@ -16,7 +16,8 @@ app.use(json());
 app.use(
     cookieSession({
         signed: false, //option to disable cookie encryption
-        secure: true //going to require that cookies will only be used if a user visit our app with https con
+       // secure: true //going to require that cookies will only be used if a user visit our app with https con
+        secure: process.env.NODE_ENV !== 'test' // if we are in test environment like with jest it will set it with false
     })
 );
 
