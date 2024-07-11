@@ -1,7 +1,7 @@
 import request from 'supertest'; // allow us to fake requests to the express app
 import { app } from '../../app';
 
-it('returns a 200 on successful sign in',async ()=>{
+it('returns a 201 and a cookie on successful sign in',async ()=>{
     await request(app)
         .post('/api/users/signup')
         .send({
