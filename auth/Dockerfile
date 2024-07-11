@@ -2,7 +2,7 @@ FROM node:16
 
 WORKDIR /app
 COPY package.json .
-RUN npm install --omit=dev # to avoid installing dev dependencies while building our image
+RUN npm install --omit=dev
 COPY . .
 
 CMD ["npm", "start"]
