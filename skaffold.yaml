@@ -15,3 +15,11 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
+    - image: shedzo/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
