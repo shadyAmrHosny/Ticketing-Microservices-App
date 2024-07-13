@@ -1,6 +1,6 @@
 import express, {Request,Response,NextFunction} from "express";
 
-import {currentUser} from "../middlewares/current-user";
+import {currentUser} from '@shedzo_common/common';
 
 const router=express.Router();
 // set up a router, which is an object that we can use routes associate with

@@ -2,10 +2,9 @@ import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken'
 
-import {validateRequest} from "../middlewares/validate-request";
+import {validateRequest,BadRequestError} from "@shedzo_common/common";
 import { User } from '../models/user';
-import { RequestValidationError } from '../errors/request-validation-error';
-import { BadRequestError } from '../errors/bad-request-error';
+import { RequestValidationError } from '@shedzo_common/common';
 // body is a function to check the body of the incoming req
 //validationResult is a function to pull validation info from the req if smth wrong with validation phase like body function for example
 
