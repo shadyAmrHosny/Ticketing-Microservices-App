@@ -31,4 +31,14 @@ build:
         manual:
           - src: 'src/**/*.js'
             dest: .
+    - image: shedzo/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+
+
 
