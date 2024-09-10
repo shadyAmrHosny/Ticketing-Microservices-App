@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import {OrderStatus} from '@shedzo_common/common';
 it('fetches order for a user ', async () => {
     const ticket = Ticket.build({
+        id: new mongoose.Types.ObjectId().toHexString(),
         title: 'test',
         price: 100
     });
