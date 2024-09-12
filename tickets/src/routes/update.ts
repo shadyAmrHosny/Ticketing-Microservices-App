@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
 import {body} from "express-validator";
-import {validateRequest, NotFoundError, requireAuth, NotAuthorizedError} from "@shedzo_common/common";
+import {validateRequest, NotFoundError, requireAuth, NotAuthorizedError, BadRequestError} from "@shedzo_common/common";
 import {Ticket} from "../models/ticket";
 import {TicketUpdatedPublisher} from "../events/publishers/ticket-updated-publisher";
 import {natsWrapper} from "../nats-wrapper";
@@ -18,6 +18,10 @@ router.put('/api/tickets/:id',
     const ticket =await Ticket.findById(req.params.id);
     if (!ticket){
         throw new NotFoundError();
+    }
+
+    if (ticket.orderId){
+        throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     if (ticket.userId !== req.currentUser?.id){
